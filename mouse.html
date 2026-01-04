@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>JavaScript Events Demo</title>
+<style>
+body {
+ font-family: Arial, sans-serif;
+ }
+{
+width: 200px;
+height: 100px;
+background-color: lightblue;
+margin-top: 10px;
+text-align: center;
+line-height: 100px;
+cursor: pointer;
+}
+</style>
+</head>
+<body>
+<h2>Form Events</h2>
+<form onsubmit="submitForm(event)" onreset="resetForm()">
+<input type="text" 
+ placeholder="Type here"
+onfocus="showMsg('Input focused')"
+onblur="showMsg('Input lost focus')"
+oninput="showMsg('Typing...')">
+<br><br>
+<button type="submit">Submit</button>
+<button type="reset">Reset</button>
+</form>
+<h2>Mouse Events</h2>
+<div id="box"
+onclick="showMsg('Mouse Click')"
+ondblclick="showMsg('Mouse Double Click')"
+onmousedown="showMsg('Mouse Down')"
+onmouseup="showMsg('Mouse Up')"
+onmouseover="showMsg('Mouse Over')"
+onmouseout="showMsg('Mouse Out')"
+onmousemove="showMsg('Mouse Move')"
+oncontextmenu="rightClick(event)"> 
+Mouse Area
+</div>
+<h2>Keyboard Events</h2>
+<input type="text"
+placeholder="Press keys"
+onkeydown="showMsg('Key Down')"
+onkeyup="showMsg('Key Up')"
+onkeypress="showMsg('Key Press')">
+<h2>Window Events</h2>
+<p id="message">Event message will appear here</p>
+<script>
+function showMsg(msg) {
+document.getElementById("message").innerText = msg;
+}
+function submitForm(event) {
+event.preventDefault();
+showMsg("Form Submitted");
+}
+function resetForm() {
+showMsg("Form Reset");
+}
+function rightClick(event) {
+event.preventDefault();
+showMsg("Right Click (Context Menu)");
+ }
+window.onload = function () {
+showMsg("Page Loaded");
+};
+window.onresize = function () {
+showMsg("Window Resized");
+};
+window.onscroll = function () {
+showMsg("Page Scrolled");
+};
+window.onunload = function () {
+alert("Page Unloaded");
+};
+</script>
+</body>
+</html>
